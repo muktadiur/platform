@@ -17,7 +17,7 @@ This repo contains the full platform including the frontend - which is "delibera
 
 ### Database setup
 
-Please ensure you have a PostgreSQL server running. If you haven't already, you can [download and install PostgreSQL](https://www.postgresql.org/download/) 
+Please ensure you have a PostgreSQL server running. If you haven't already, you can [download and install PostgreSQL](https://www.postgresql.org/download/)
 
 By default, the OpenUnited platform will look for a database named "ou_db" and use "postgres" as both the username and password. For development purposes, if you already have a postgres server running locally with this default username/password combination, the easiest thing is to just create a database named: ou_db. To override the database settings, you can copy .env.example to .env and set the values you want.
 
@@ -28,11 +28,22 @@ Please fork this repo, then depending on your local environment, do something li
 ```
 git clone git@github.com:OpenUnited/platform.git
 cd platform
-python3 -m venv env
-source env/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ./setup.sh
 python manage.py runserver
+```
+or
+## Run in Docker
+Rename .env.example to .env
+```
+docker-compose up
+
+To Load the sample data
+docker exec -it <platform_app_container_id> bash
+./setup.sh
+
 ```
 
 Then navigate to: [http://localhost:8000/](http://localhost:8000/) in your browser.
